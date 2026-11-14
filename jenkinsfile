@@ -1,0 +1,5 @@
+pipeline {
+  agent any
+  stages {
+    stage('Build') { steps { sh 'docker build -t web-uoc:1.0 .'} }
+    stage('Deploy') { steps { sh 'kubectl apply -f k8s/' } }
