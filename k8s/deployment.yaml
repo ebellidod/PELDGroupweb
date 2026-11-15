@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
           - name: web-uoc
-            image: web-uoc:BUILD_TAG_PLACEHOLDER
+            image: web-uoc:1.0
             imagePullPolicy: Never
             ports:
               - containerPort: 8080
