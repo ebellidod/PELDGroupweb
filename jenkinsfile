@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('Build') { 
         steps { 
-          sh 'docker build -t web-uoc:1.0 .'
+          sh 'docker build -t web-uoc:$BUILD_NUMBER .'
         } 
       }
     stage('Cargar imagen en Minikube') {
       steps { 
-        sh 'minikube image load web-uoc:1.0'
+        sh 'minikube image load web-uoc:$BUILD_NUMBER'
         } 
       }
     stage('Deploy') {
