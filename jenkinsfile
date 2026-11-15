@@ -14,7 +14,7 @@ pipeline {
     stage('Deploy') {
       steps { 
         sh 'sed "s/BUILD_TAG_PLACEHOLDER/$BUILD_NUMBER/" k8s/deployment.yaml | kubectl apply -f -'
-        sh 'kubectl apply -f k8s/service.yaml' 
+        sh 'kubectl apply -f k8s/deployment.yaml' 
         sh 'kubectl rollout status deployment/web-uoc --timeout=120s'
         } 
       }
