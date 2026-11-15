@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -35,6 +36,10 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	http.HandleFunc("/", inicio)
+	http.HandleFunc("/pod", func(w http.ResponseWriter, r *http.Request) {
+		nombre, _ := os.Hostname()
+		fmt.Fprintf(w, "Hola desde el pod %s", nombre)
+	})
 
 	log.Printf("Servidor escuchando en hhtp://localhost:%s", puerto)
 	log.Fatal(http.ListenAndServe(":"+puerto, nil))
